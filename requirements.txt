@@ -1,2 +1,2 @@
-airflow-provider-great-expectations
-great-expectations==0.13.14
+airflow-provider-great-expectations==0.2.0
+great-expectations==0.15.32
