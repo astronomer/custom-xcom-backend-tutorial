@@ -4,7 +4,7 @@ when using a custom XCom backend with a custom serialization method.
 The serialization methods are stored in the include folder.
 
 To use this DAG select you preferred blob storage from S3, GCS, Azure Blob or
-MinIO and set the environment variable:
+MinIO and change the environment variable in the Dockerfile:
 
 AIRFLOW__CORE__XCOM_BACKEND=include.myxcombackendfile.myxcombackendclass
 
