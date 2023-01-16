@@ -1,3 +1,2 @@
-airflow-provider-great-expectations==0.2.0
-great-expectations==0.15.32
+airflow-provider-great-expectations==0.2.4
 minio
