@@ -45,8 +45,16 @@ class MinIOXComBackendPandas(BaseXCom):
                 bytes_to_write = io.BytesIO(bytes(string_file, 'utf-8'))
 
             os.remove(filename)
-        # if the value passed is not a Pandas dataframe, attempt to use
-        # JSON serialization
+            
+        # this section handles serialization of GX CheckpointResult objects
+        if not isinstance(value, (str, dict, list)):
+            filename = "data_" + str(uuid.uuid4()) + ".json"
+            s3_key = f"{run_id}/{task_id}/{filename}"
+
+            with open(filename, 'w') as f:
+                json.dump(json.loads(str(value)), f)
+
+        # if the value passed a str, dict or list, use standard JSON serialization
         else:
             filename = "data_" + str(uuid.uuid4()) + ".json"
             minio_key = f"{run_id}/{task_id}/{filename}"
